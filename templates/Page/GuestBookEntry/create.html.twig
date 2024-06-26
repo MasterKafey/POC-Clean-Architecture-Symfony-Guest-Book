@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ viewModel.guestBookEntry.id }}
+    {{ viewModel.guestBookEntry.message }}
+    {{ viewModel.guestBookEntry.author }}
+    {{ viewModel.guestBookEntry.createdAt|date('d/m/Y H:i:s') }}
+{% endblock body %}

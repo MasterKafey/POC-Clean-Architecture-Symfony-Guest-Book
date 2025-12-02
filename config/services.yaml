@@ -1,0 +1,21 @@
+parameters:
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\:
+        resource: '../src/'
+
+    App\Authentication\Application\EventHandler\SendEmailValidationHandler:
+        tags:
+            - { name: kernel.event_listener, event: App\Authentication\Domain\Event\UserRegistered }
+
+    App\Authentication\Infrastructure\Symfony\Exception\DomainExceptionConverter:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }
+
+    App\Comment\Infrastructure\Symfony\Exception\DomainExceptionConverter:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }

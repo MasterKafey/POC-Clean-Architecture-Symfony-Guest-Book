@@ -1,0 +1,443 @@
+{
+	"info": {
+		"_postman_id": "ef69da10-edbd-47fc-a098-c62384054aed",
+		"name": "GuestBook",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50400486",
+		"_collection_link": "https://galactic-flare-294417.postman.co/workspace/Team-Workspace~33acfed0-f675-4464-8f60-61c00819120d/collection/50400486-ef69da10-edbd-47fc-a098-c62384054aed?action=share&source=collection_link&creator=50400486"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "me",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/user/me",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "register",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"jean.marius@dyosis.com\",\r\n    \"password\": \"password\",\r\n    \"firstName\": \"Jean\",\r\n    \"lastName\": \"Marius\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/user/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"jean.marius@dyosis.com\",\r\n    \"password\": \"password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/user/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getUsers",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/user",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ban",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/user/:id/ban",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										":id",
+										"ban"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1f0cb701-1ea7-6f24-89e0-39aaa29667bf"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "unban",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/user/:id/unban",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										":id",
+										"unban"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1f0cb701-1ea7-6f24-89e0-39aaa29667bf"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "validate email",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/user/validate-email/:token",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"user",
+										"validate-email",
+										":token"
+									],
+									"variable": [
+										{
+											"key": "token",
+											"value": "dd18404f0d932f71df1e0ee43f6168575b13bda14866a7356b3cbae6c1c58533"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"message\": \"Salut ca va ?\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/comment",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"message\": \"Saluuuuut\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/comment/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comment",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1f0d051c-4355-6d3a-ab29-9764705f306c"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "read",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/comment",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/comment/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comment",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1f0d050d-7938-6b1e-a8de-ed6b14d66238"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "block",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/comment/:id/block",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comment",
+								":id",
+								"block"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1f0d051c-4355-6d3a-ab29-9764705f306c"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unblock",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/comment/:id/unblock",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comment",
+								":id",
+								"unblock"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1f0d051c-4355-6d3a-ab29-9764705f306c"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

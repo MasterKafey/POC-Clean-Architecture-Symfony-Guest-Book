@@ -1,0 +1,14 @@
+services:
+
+    database.guest-book:
+        image: mariadb:11
+        container_name: database.guest-book
+        ports:
+            - "3306:3306"
+        volumes:
+            - database_guest_book:/var/lib/mysql
+        environment:
+            MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: true
+
+volumes:
+    database_guest_book:

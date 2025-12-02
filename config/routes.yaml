@@ -1,0 +1,16 @@
+authentication_controllers:
+    resource:
+        path: ../src/Authentication/Infrastructure/Symfony/Controller/
+        namespace: App\Authentication\Infrastructure\Symfony\Controller
+    type: attribute
+
+comment_controllers:
+    resource:
+        path: ../src/Comment/Infrastructure/Symfony/Controller/
+        namespace: App\Comment\Infrastructure\Symfony\Controller
+    type: attribute
+
+app_user_login:
+    path: /login
+    methods:
+        - POST
